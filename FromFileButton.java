@@ -1,5 +1,6 @@
 /**
- * This class is used to construct a button
+ * This class is used to construct a button to display a prompt.
+ * Part of controller.
  * @author
  *
  */

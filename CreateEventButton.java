@@ -1,7 +1,7 @@
 import javax.swing.JButton;
 
 /** 
- * This class is used to construct the "Create" button.
+ * This class is used to construct the "Create" button. Part of controller.
  * @author Ryan Vo
  * @version 2013-11-23
  *

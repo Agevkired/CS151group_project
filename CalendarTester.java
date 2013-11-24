@@ -1,5 +1,5 @@
 /**
- * This class runs the entire project.
+ * This class runs the entire project. Everything comes together here.
  * @author Cobra
  *
  */
