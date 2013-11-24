@@ -1,4 +1,11 @@
+import javax.swing.JPanel;
 
-public class MiniCalendar {
+/**
+ * This class lets the user select a day. It should notify the View when the user selects a day.
+ * @author
+ *
+ */
+public class MiniCalendar extends JPanel
+{
 
 }
