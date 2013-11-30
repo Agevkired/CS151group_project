@@ -4,10 +4,10 @@ import java.util.GregorianCalendar;
 /**
  * This class stores information about an event on the calendar. Part of the model.
  * @author Ryan Vo
- * @version 2013-11-28
+ * @version 2013-11-29
  *
  */
-public class CalendarEvent 
+public class CalendarEvent implements Comparable<CalendarEvent>
 {
 	/**
 	 * Constructs a CalendarEvent object. The event shall start and end on the same day.
@@ -78,6 +78,66 @@ public class CalendarEvent
 	public int getEndHour()
 	{
 		return endDate.get(Calendar.HOUR_OF_DAY);
+	}
+	
+	/**
+	 * Gets the start date. Modifying the returned object will not modify
+	 *    CalendarEvent.
+	 * @return The start date.
+	 */
+	public GregorianCalendar getStartDate()
+	{
+		return (GregorianCalendar) startDate.clone();
+	}
+	
+	/**
+	 * Gets the end date. Modifying the returned object will not modify
+	 *    CalendarEvent.
+	 * @return The end date.
+	 */
+	public GregorianCalendar getEndDate()
+	{
+		return (GregorianCalendar) endDate.clone();
+	}
+	
+	/**
+	 * Determines whether two events have time conflicts.
+	 * @param other The other CalendarEvent.
+	 * @return true if two events conflict; false otherwise.
+	 */
+	public boolean conflictsWith(CalendarEvent other)
+	{
+		
+		int startComparison = this.startDate.compareTo(other.startDate);
+		if (startComparison == 0)
+		{
+			return true;
+		}
+		else if (startComparison < 0)
+		{
+			return this.endDate.compareTo(other.startDate) > 0;
+		}
+		else
+			return other.endDate.compareTo(this.startDate) > 0;
+	}
+	
+	@Override
+	public int compareTo(CalendarEvent other) 
+	{
+		return startDate.compareTo(other.startDate);
+	}
+	
+	@Override
+	public String toString()
+	{
+		String sb = getEventName() + ";";
+		sb += (getYear() + ";");
+		sb += (getMonth() + ";");
+		sb += (getDay() + ";");
+		sb += (getStartHour() + ";");
+		sb += (getEndHour() + ";");
+		
+		return sb;
 	}
 	
 	// Should the assumption be made that events start and end on the same day?
