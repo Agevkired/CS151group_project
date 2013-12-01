@@ -1,39 +1,66 @@
 package cs151_project;
 
-public class Agenda
+import java.util.ArrayList;
+
+public class CalendarModel
 {
-	String theagenda;
-	private int month, day, year;
-	
-	public Agenda(int m, int d, int y, String agen)
-	{
-		month = m;
-		day = d;
-		year = y;
-		theagenda = agen;
-	}
-        public Agenda()
+    private ArrayList<Agenda> agendalist;
+    private int AgendaOrder;
+    private int currentmonth, currentday, currentyear;
+    public CalendarModel()
+    {
+        agendalist = new ArrayList();
+    }
+    
+    public void addAgenda(Agenda agen)
+    {
+        agendalist.add(agen);
+    }
+    public Agenda getAgenda(int n)
+    {
+        if(agendalist.isEmpty())
         {
-            month = 0;
-            day = 0;
-            year = 0;
-            theagenda = "NULL";
+            return new Agenda();
         }
-	
-	public int getmonth()
-	{
-		return month;
-	}
-	public int getday()
-	{
-		return day;
-	}
-	public int getyear()
-	{
-		return year;
-	}
-	public String getagenda()
-	{
-		return theagenda;
-	}
+        else
+        {
+            return agendalist.get(n);
+        }
+    }
+    //CHANGES VIEW FOR AGENDA FOR DAY, WEEK, MONTH, AGENDA
+    //0,1,2,3
+    public void setOrder(int n)
+    {
+        AgendaOrder = n;
+    }
+    public int getOrder()
+    {
+        return AgendaOrder;
+    }
+    //SETS DAY FOR THE VIEWS
+    public void setMonth(int n)
+    {
+        currentmonth = n;
+    }
+    public void setDay(int n)
+    {
+        currentday = n;
+    }
+    public void setYear(int n)
+    {
+        currentyear = n;
+    }
+    public int getMonth()
+    {
+        return currentmonth;
+    }
+    public int getDay()
+    {
+        return currentday;
+    }
+    public int getYear()
+    {
+        return currentyear;
+    }
+    
 }
