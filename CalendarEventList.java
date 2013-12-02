@@ -52,6 +52,19 @@ public class CalendarEventList
 		}
 	}
 	
+	public CalendarEvent getEvent(int year, int month, int day, int startHour)
+	{
+		GregorianCalendar timeOfEvent = new GregorianCalendar(year, month - 1, day, startHour, 0);
+		for (CalendarEvent e : events)
+		{
+			if (e.getStartDate().equals(timeOfEvent))
+			{
+				return e;
+			}
+		}
+		return null;
+	}
+	
 	/** 
 	 * Adds a repeating event to the calendar. If the event cannot be added, 
 	 * let the controller handle the exception.
